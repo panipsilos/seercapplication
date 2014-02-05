@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title><ui:insert name="title">Default title</ui:insert></title>
+</h:head>
+
+<body>
+	<h:graphicImage id="image" alt="jsf-sun" url="seerc.jpg"
+		style="height: 115px; width: 266px; "></h:graphicImage>
+	<p:panel id="panel" header="Make a Test Refund using Stripe">
+		<form id="form" action="/PaymentServiceProviders/striperefund"
+			method="post">			
+			<label for="capture token ">Insert the capture token (Id))</label>
+			<input name="captureToken" /> 
+			<br></br>
+			<label for="amount">Insert the amount to be refunded (optional)</label>
+			<input name="amount" /> 
+			<br></br>			
+			<h:commandButton type='submit' value="Submit" />
+		</form>
+	</p:panel>
+</body>
+
+</html>
+
+
+
+
+

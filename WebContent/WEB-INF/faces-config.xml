@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<faces-config
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
+    version="2.0">
+	<managed-bean>
+		<managed-bean-name>loginBean</managed-bean-name>
+		<managed-bean-class>org.tutorial.LoginBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>ProjectEntityHandlerBean</managed-bean-name>
+		<managed-bean-class>org.tutorial.ProjectEntityHandlerBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>PaymentFormHandlerBean</managed-bean-name>
+		<managed-bean-class>org.tutorial.PaymentFormHandlerBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+		<managed-bean>
+		<managed-bean-name>StripeHandlerBean</managed-bean-name>
+		<managed-bean-class>org.tutorial.StripeHandlerBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	
+	<managed-bean>
+		<managed-bean-name>departmentEntityHandlerBean</managed-bean-name>
+		<managed-bean-class>org.tutorial.DepartmentEntityHandlerBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>employeeEntityHandlerBean</managed-bean-name>
+		<managed-bean-class>org.tutorial.EmployeeEntityHandlerBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>partnerEntityHandlerBean</managed-bean-name>
+		<managed-bean-class>org.tutorial.PartnerEntityHandlerBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>SubmitTaskHandlerBean</managed-bean-name>
+		<managed-bean-class>org.tutorial.SubmitTaskHandlerBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	
+	
+	<navigation-rule>
+		<display-name>chooseAction.xhtml</display-name>
+		<from-view-id>/chooseAction.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>project</from-outcome>
+			<to-view-id>/project.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule> 
+
+	<navigation-rule>
+		<display-name>login.xhtml</display-name>
+		<from-view-id>/login.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/chooseAction.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+
+</faces-config>

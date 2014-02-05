@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	metadata-complete="false">
+
+	<welcome-file-list>
+		<welcome-file>choosepaymentservice.xhtml</welcome-file>
+	</welcome-file-list>
+
+
+	<servlet>
+		<servlet-name>Faces Servlet</servlet-name>
+		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<!-- Stripe Purchase Mapping -->
+	<servlet>
+		<servlet-name>StripePurchaseServlet</servlet-name>
+		<servlet-class>org.providers.stripe.StripePurchaseServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>StripePurchaseServlet</servlet-name>
+		<url-pattern>/stripepurchase</url-pattern>
+	</servlet-mapping>
+
+
+	<!-- Stripe Authorise Mapping -->
+	<servlet>
+		<servlet-name>StripeAuthoriseServlet</servlet-name>
+		<servlet-class>org.providers.stripe.StripeAuthoriseServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>StripeAuthoriseServlet</servlet-name>
+		<url-pattern>/stripeauthorise</url-pattern>
+	</servlet-mapping>
+
+	<!-- Stripe Capture Mapping -->
+	<servlet>
+		<servlet-name>StripeCaptureServlet</servlet-name>
+		<servlet-class>org.providers.stripe.StripeCaptureServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>StripeCaptureServlet</servlet-name>
+		<url-pattern>/stripecapture</url-pattern>
+	</servlet-mapping>
+
+	<!-- Stripe Refund Mapping -->
+	<servlet>
+		<servlet-name>StripeRefundServlet</servlet-name>
+		<servlet-class>org.providers.stripe.StripeRefundServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>StripeRefundServlet</servlet-name>
+		<url-pattern>/striperefund</url-pattern>
+	</servlet-mapping>
+
+	<!-- Stripe Void Mapping -->
+	<servlet>
+		<servlet-name>StripeVoidServlet</servlet-name>
+		<servlet-class>org.providers.stripe.StripeVoidServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>StripeVoidServlet</servlet-name>
+		<url-pattern>/stripevoid</url-pattern>
+	</servlet-mapping>
+
+	<!-- Chargify Mapping -->
+	<servlet>
+		<servlet-name>ChargifyServlet</servlet-name>
+		<servlet-class>org.providers.ChargifyServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ChargifyServlet</servlet-name>
+		<url-pattern>/chargify</url-pattern>
+	</servlet-mapping>
+
+	<!-- Viva Payments Purchase Mapping -->
+	<servlet>
+		<servlet-name>VivaPaymentsServlet</servlet-name>
+		<servlet-class>org.providers.vivapayments.VivaPaymentsPurchaseServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>VivaPaymentsServlet</servlet-name>
+		<url-pattern>/vivapurchase</url-pattern>
+	</servlet-mapping>
+
+	<!-- Viva Payments Authorise Mapping -->
+	<servlet>
+		<servlet-name>VivaPaymentsAuthoriseServlet</servlet-name>
+		<servlet-class>org.providers.vivapayments.VivaPaymentsAuthoriseServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>VivaPaymentsAuthoriseServlet</servlet-name>
+		<url-pattern>/vivapaymentsauthorise</url-pattern>
+	</servlet-mapping>
+
+	<!-- Viva Payments Get Transaction details Page -->
+	<servlet-mapping>
+		<servlet-name>VivaPaymentsGetTransactionDetailsServlet</servlet-name>
+		<url-pattern>/vivapaymentsgettransactiondetails</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>VivaPaymentsGetTransactionDetailsServlet</servlet-name>
+		<servlet-class>org.providers.vivapayments.VivaPaymentsGetTransactionDetailsServlet</servlet-class>
+	</servlet>
+
+	<!-- Viva Payments Refund Page -->
+	<servlet-mapping>
+		<servlet-name>VivaPaymentsRefundServlet</servlet-name>
+		<url-pattern>/vivapaymentsrefund</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>VivaPaymentsRefundServlet</servlet-name>
+		<servlet-class>org.providers.vivapayments.VivaPaymentsRefundServlet</servlet-class>
+	</servlet>
+
+	<!-- Viva Payments Void Page -->
+	<servlet-mapping>
+		<servlet-name>VivaPaymentsVoidServlet</servlet-name>
+		<url-pattern>/vivapaymentsvoid</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>VivaPaymentsVoidServlet</servlet-name>
+		<servlet-class>org.providers.vivapayments.VivaPaymentsVoidServlet</servlet-class>
+	</servlet>
+
+	<!-- Viva Payments Success Page -->
+	<servlet-mapping>
+		<servlet-name>VivaPaymentsSuccessServlet</servlet-name>
+		<url-pattern>/vivapaymentssuccess</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>VivaPaymentsSuccessServlet</servlet-name>
+		<servlet-class>org.providers.vivapayments.VivaPaymentsSuccessServlet</servlet-class>
+	</servlet>
+
+	<!-- Viva Payments Failure Page -->
+	<servlet-mapping>
+		<servlet-name>VivaPaymentsFailureServlet</servlet-name>
+		<url-pattern>/vivapaymentsfailure</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>VivaPaymentsFailureServlet</servlet-name>
+		<servlet-class>org.providers.vivapayments.VivaPaymentsFailureServlet</servlet-class>
+	</servlet>
+
+	<!-- Spreedly Mapping -->
+	<servlet>
+		<servlet-name>SpreedlyServlet</servlet-name>
+		<servlet-class>org.providers.spreedly.SpreedlyPurchaseServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>SpreedlyServlet</servlet-name>
+		<url-pattern>/SpreedlyCharge</url-pattern>
+	</servlet-mapping>
+
+	<!-- Spreedly Authorise Mapping -->
+	<servlet>
+		<servlet-name>SpreedlyAuthoriseServlet</servlet-name>
+		<servlet-class>org.providers.spreedly.SpreedlyAuthoriseServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>SpreedlyAuthoriseServlet</servlet-name>
+		<url-pattern>/SpreedlyAuthorise</url-pattern>
+	</servlet-mapping>
+
+	<!-- Spreedly Capture Mapping -->
+	<servlet>
+		<servlet-name>SpreedlyCaptureServlet</servlet-name>
+		<servlet-class>org.providers.spreedly.SpreedlyCaptureServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>SpreedlyCaptureServlet</servlet-name>
+		<url-pattern>/SpreedlyCapture</url-pattern>
+	</servlet-mapping>
+
+	<!-- Spreedly Void Mapping -->
+	<servlet>
+		<servlet-name>SpreedlyVoidServlet</servlet-name>
+		<servlet-class>org.providers.spreedly.SpreedlyVoidServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>SpreedlyVoidServlet</servlet-name>
+		<url-pattern>/SpreedlyVoid</url-pattern>
+	</servlet-mapping>
+
+	<!-- Spreedly Refund Mapping -->
+	<servlet>
+		<servlet-name>SpreedlyRefundServlet</servlet-name>
+		<servlet-class>org.providers.spreedly.SpreedlyRefundServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>SpreedlyRefundServlet</servlet-name>
+		<url-pattern>/SpreedlyRefund</url-pattern>
+	</servlet-mapping>
+
+	<!-- BrainTree Purhase mapping -->
+	<servlet>
+		<servlet-name>BraintreePurchaseServlet</servlet-name>
+		<servlet-class>org.providers.braintree.BraintreePurchaseServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>BraintreePurchaseServlet</servlet-name>
+		<url-pattern>/BraintreePurchaseServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>*.xhtml</url-pattern>
+	</servlet-mapping>
+</web-app>
+
