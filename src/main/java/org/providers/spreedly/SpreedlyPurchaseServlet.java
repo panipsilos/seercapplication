@@ -25,7 +25,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.auth.BasicScheme;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
-import org.apache.tomcat.jdbc.pool.interceptor.QueryTimeoutInterceptor;
+//import org.apache.tomcat.jdbc.pool.interceptor.QueryTimeoutInterceptor;
 import org.utilities.XmlFormatter;
 
 @SuppressWarnings("serial")
