@@ -16,49 +16,41 @@ import com.braintreegateway.Result;
 import com.braintreegateway.Transaction;
 import com.braintreegateway.TransactionRequest;
 
-public class BraintreeRefundServlet extends HttpServlet{
-	
-	
-	private static BraintreeGateway gateway = new BraintreeGateway(Environment.SANDBOX, "8g6rcnm8xnmyqb7p", "px3smkxtn79cfyx2", "df0a499650f1b2f054b568f10393048c");
-	
+public class BraintreeRefundServlet extends HttpServlet {
+
+	private static BraintreeGateway gateway = new BraintreeGateway(
+			Environment.SANDBOX, "8g6rcnm8xnmyqb7p", "px3smkxtn79cfyx2",
+			"df0a499650f1b2f054b568f10393048c");
+
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
-	
-		String number = req.getParameter("number");
 		
-		TransactionRequest transactionRequest = new TransactionRequest()
-        .amount(new BigDecimal("1000.00"))
-        .creditCard()
-            .number(req.getParameter("number"))
-            .cvv(req.getParameter("cvv"))
-            .expirationMonth(req.getParameter("month"))
-            .expirationYear(req.getParameter("year"))
-            .done()
-        .options()
-            .submitForSettlement(true)
-            .done();
+		BraintreeOperations bo = new BraintreeOperations();
 		
-		Result<Transaction> result = gateway.transaction().sale(transactionRequest);
+		Result<Transaction> result;
 		
-		
+		// check if amount has been filled
+		if (req.getParameter("amount").compareTo("") == 0) {
+			result = bo.refund(req.getParameter("transactionId"));
+		} else {
+			result = bo.refund(req.getParameter("transactionId"),
+					req.getParameter("amount"));
+		}
+
 		PrintWriter out = resp.getWriter();
-		if( result.isSuccess())
-		{
-			out.print("The payment has been completed successfully"+"\n");
-			out.print(result.getTarget().getId()+"\n");
-			out.print(result.getTarget().getProcessorResponseText()+"\n");
-			out.print(result.getTarget().getAvsErrorResponseCode()+"\n");
-			out.print(result.getTarget().getGatewayRejectionReason()+"\n");
-			out.print(result.getTarget().getAmount()+"\n");
+		if (result.isSuccess()) {
+			out.print("The payment has been completed successfully" + "\n");
+			out.print(result.getTarget().getId() + "\n");
+			out.print(result.getTarget().getProcessorResponseText() + "\n");
+			out.print(result.getTarget().getAvsErrorResponseCode() + "\n");
+			out.print(result.getTarget().getGatewayRejectionReason() + "\n");
+			out.print(result.getTarget().getAmount() + "\n");
+		} else {
+			out.print("The payment has failed" + "\n");
+			out.print(result.getMessage() + "\n");
+
 		}
-		else 
-		{
-			out.print("The payment has failed"+"\n");
-			out.print(result.getMessage()+"\n");
-			
-		}
-		
-		
+
 	}
-	
+
 }

@@ -15,6 +15,7 @@ import com.braintreegateway.Environment;
 import com.braintreegateway.Result;
 import com.braintreegateway.Transaction;
 import com.braintreegateway.TransactionRequest;
+import com.braintreegateway.ValidationError;
 
 public class BraintreeAuthoriseServlet extends HttpServlet{
 	
@@ -24,23 +25,11 @@ public class BraintreeAuthoriseServlet extends HttpServlet{
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
 	
-		String number = req.getParameter("number");
-		
-		TransactionRequest transactionRequest = new TransactionRequest()
-        .amount(new BigDecimal("1000.00"))
-        .creditCard()
-            .number(req.getParameter("number"))
-            .cvv(req.getParameter("cvv"))
-            .expirationMonth(req.getParameter("month"))
-            .expirationYear(req.getParameter("year"))
-            .done()
-        .options()
-            .submitForSettlement(true)
-            .done();
-		
-		Result<Transaction> result = gateway.transaction().sale(transactionRequest);
-		
-		
+		BraintreeOperations bo = new BraintreeOperations();
+		Result<Transaction> result = bo.authorise(req.getParameter("number"), req.getParameter("cvv"),
+				req.getParameter("month"), req.getParameter("year"),
+				req.getParameter("1000"), req.getParameter("USD"));
+			
 		PrintWriter out = resp.getWriter();
 		if( result.isSuccess())
 		{
@@ -50,11 +39,16 @@ public class BraintreeAuthoriseServlet extends HttpServlet{
 			out.print(result.getTarget().getAvsErrorResponseCode()+"\n");
 			out.print(result.getTarget().getGatewayRejectionReason()+"\n");
 			out.print(result.getTarget().getAmount()+"\n");
+			out.print(result.getTarget().getProcessorResponseCode() + "\n");
+			out.print(result.getTarget().getStatus().toString() + "\n");
 		}
 		else 
 		{
 			out.print("The payment has failed"+"\n");
 			out.print(result.getMessage()+"\n");
+			for (ValidationError error : result.getErrors().getAllDeepValidationErrors()) {
+		        System.out.println(error.getMessage());
+			}
 			
 		}
 		

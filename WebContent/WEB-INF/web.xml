@@ -226,6 +226,61 @@
 		<url-pattern>/BraintreePurchaseServlet</url-pattern>
 	</servlet-mapping>
 
+	<!-- BrainTree Authorise mapping -->
+	<servlet>
+		<servlet-name>BraintreeAuthoriseServlet</servlet-name>
+		<servlet-class>org.providers.braintree.BraintreeAuthoriseServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>BraintreeAuthoriseServlet</servlet-name>
+		<url-pattern>/BraintreeAuthoriseServlet</url-pattern>
+	</servlet-mapping>
+
+	<!-- BrainTree Capture mapping -->
+	<servlet>
+		<servlet-name>BraintreeCaptureServlet</servlet-name>
+		<servlet-class>org.providers.braintree.BraintreeCaptureServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>BraintreeCaptureServlet</servlet-name>
+		<url-pattern>/braintreecapture</url-pattern>
+	</servlet-mapping>
+	
+	<!-- BrainTree Refund mapping -->
+	<servlet>
+		<servlet-name>BraintreeRefundServlet</servlet-name>
+		<servlet-class>org.providers.braintree.BraintreeRefundServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>BraintreeRefundServlet</servlet-name>
+		<url-pattern>/braintreerefund</url-pattern>
+	</servlet-mapping>
+
+	<!-- BrainTree Void mapping -->
+	<servlet>
+		<servlet-name>BraintreeVoidServlet</servlet-name>
+		<servlet-class>org.providers.braintree.BraintreeVoidServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>BraintreeVoidServlet</servlet-name>
+		<url-pattern>/braintreevoid</url-pattern>
+	</servlet-mapping>
+
+	<!-- BrainTree Get Transaction Details mapping -->
+	<servlet>
+		<servlet-name>BraintreeGetTransactionDetailsServlet</servlet-name>
+		<servlet-class>org.providers.braintree.BraintreeGetTransactionDetailsServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>BraintreeGetTransactionDetailsServlet</servlet-name>
+		<url-pattern>/braintreegettransactiondetails</url-pattern>
+	</servlet-mapping>
+
 	<servlet-mapping>
 		<servlet-name>Faces Servlet</servlet-name>
 		<url-pattern>*.xhtml</url-pattern>

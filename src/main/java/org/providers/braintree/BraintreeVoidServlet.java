@@ -16,29 +16,19 @@ import com.braintreegateway.Result;
 import com.braintreegateway.Transaction;
 import com.braintreegateway.TransactionRequest;
 
-public class BraintreeVoidServlet extends HttpServlet{
-	
-	
-	private static BraintreeGateway gateway = new BraintreeGateway(Environment.SANDBOX, "8g6rcnm8xnmyqb7p", "px3smkxtn79cfyx2", "df0a499650f1b2f054b568f10393048c");
-	
+public class BraintreeVoidServlet extends HttpServlet {
+
+	private static BraintreeGateway gateway = new BraintreeGateway(
+			Environment.SANDBOX, "8g6rcnm8xnmyqb7p", "px3smkxtn79cfyx2",
+			"df0a499650f1b2f054b568f10393048c");
+
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
 	
-		String number = req.getParameter("number");
+		BraintreeOperations bo = new BraintreeOperations();
+		Result<Transaction> result;
 		
-		TransactionRequest transactionRequest = new TransactionRequest()
-        .amount(new BigDecimal("1000.00"))
-        .creditCard()
-            .number(req.getParameter("number"))
-            .cvv(req.getParameter("cvv"))
-            .expirationMonth(req.getParameter("month"))
-            .expirationYear(req.getParameter("year"))
-            .done()
-        .options()
-            .submitForSettlement(true)
-            .done();
-		
-		Result<Transaction> result = gateway.transaction().sale(transactionRequest);
+		result = bo.voidOperation(req.getParameter("transactionId"));
 		
 		
 		PrintWriter out = resp.getWriter();
@@ -50,6 +40,8 @@ public class BraintreeVoidServlet extends HttpServlet{
 			out.print(result.getTarget().getAvsErrorResponseCode()+"\n");
 			out.print(result.getTarget().getGatewayRejectionReason()+"\n");
 			out.print(result.getTarget().getAmount()+"\n");
+			out.print(result.getTarget().getProcessorResponseCode() + "\n");
+			out.print(result.getTarget().getStatus().toString() + "\n");
 		}
 		else 
 		{
@@ -60,5 +52,4 @@ public class BraintreeVoidServlet extends HttpServlet{
 		
 		
 	}
-	
 }

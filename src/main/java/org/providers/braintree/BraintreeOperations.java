@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,326 +19,85 @@ import org.apache.http.impl.auth.BasicScheme;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
+import com.braintreegateway.BraintreeGateway;
+import com.braintreegateway.Environment;
+import com.braintreegateway.Result;
+import com.braintreegateway.Transaction;
+import com.braintreegateway.TransactionRequest;
+
 public class BraintreeOperations {
 
-	public String authorise(String paymentMethodToken, String amount,
-			String currencyCode)
-	{
-		try {
-			// url to make the call
-			String endpoint = "https://core.spreedly.com/v1/gateways/SP8GkisOIdQNOyECXveyHjhuNSQ/authorize.xml";
+	private static BraintreeGateway gateway = new BraintreeGateway(
+			Environment.SANDBOX, "8g6rcnm8xnmyqb7p", "px3smkxtn79cfyx2",
+			"df0a499650f1b2f054b568f10393048c");
 
-			// create http client
-			HttpClient httpclient = new DefaultHttpClient();
-			HttpPost httppost = new HttpPost(endpoint);
+	public Result<Transaction> authorise(String cardNumber, String cvv,
+			String month, String year, String amount, String currencyCode) {
+		
+		TransactionRequest transactionRequest = new TransactionRequest()
+				.amount(new BigDecimal("1000.00")).creditCard()
+				.number(cardNumber).cvv(cvv).expirationMonth(month)
+				.expirationYear(year).done().options()
+				.submitForSettlement(false).done();
 
-			// add authentiction header
-			httppost.addHeader(BasicScheme
-					.authenticate(
-							new UsernamePasswordCredentials(
-									"J0QM5AkMDWyzV9NnvPtuNYhsU7Q",
-									"HjkPEYVxQ04U0FiHlwS5Cd17djh4JO8nE6X1Htju9koXo7qYw9Q1M6PdHJexXJDh"),
-							"UTF-8", false));
+		Result<Transaction> result = gateway.transaction().sale(
+				transactionRequest);
+		return result;
+	}
 
-			// Request parameters and other properties.
-			List<NameValuePair> params = new ArrayList<NameValuePair>();
-			params.add(new BasicNameValuePair("transaction[amount]", amount));
-			params.add(new BasicNameValuePair("transaction[currency_code]",
-					currencyCode));
-			params.add(new BasicNameValuePair(
-					"transaction[payment_method_token]", paymentMethodToken));
+	public Result<Transaction> purchase(String cardNumber, String cvv,
+			String month, String year, String amount, String currencyCode) {
+		
+		TransactionRequest transactionRequest = new TransactionRequest()
+				.amount(new BigDecimal("1000.00")).creditCard()
+				.number(cardNumber).cvv(cvv).expirationMonth(month)
+				.expirationYear(year).done().options()
+				.submitForSettlement(true).done();
 
-			httppost.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
+		Result<Transaction> result = gateway.transaction().sale(
+				transactionRequest);
+		return result;
+	}
 
-			// read the response
-			HttpResponse response = httpclient.execute(httppost);
-			HttpEntity entity = response.getEntity();
-			StringBuffer result = new StringBuffer();
-			if (entity != null) {
-				InputStream instream = entity.getContent();
-				try {
-					BufferedReader rd = new BufferedReader(
-							new InputStreamReader(instream));
-					
-					String line = "";
-					while ((line = rd.readLine()) != null) {
-						result.append(line);
-					}
-
-					System.out.println(result.toString());
-				} finally {
-					instream.close();
-				}
-				return result.toString();
-			}
-		} catch (Exception e) {
-			System.out.print(e);
-		}
-
-		System.out.print("");
-
-		return "";
+	public Result<Transaction> capture(String transactionId, String amount) {
+		
+		Result<Transaction> result = gateway.transaction().submitForSettlement(transactionId, new BigDecimal(amount));
+		return result;
 	}
 	
-	public String capture(String authorisationToken)
-	{
-		try {
-			// url to make the call
-			String endpoint = "https://core.spreedly.com/v1/transactions/"+authorisationToken+"/capture.xml";
-
-			// create http client
-			HttpClient httpclient = new DefaultHttpClient();
-			HttpPost httppost = new HttpPost(endpoint);
-
-			// add authentiction header
-			httppost.addHeader(BasicScheme
-					.authenticate(
-							new UsernamePasswordCredentials(
-									"J0QM5AkMDWyzV9NnvPtuNYhsU7Q",
-									"HjkPEYVxQ04U0FiHlwS5Cd17djh4JO8nE6X1Htju9koXo7qYw9Q1M6PdHJexXJDh"),
-							"UTF-8", false));
-
-			// Request parameters and other properties.
-
-
-			// read the response
-			HttpResponse response = httpclient.execute(httppost);
-			HttpEntity entity = response.getEntity();
-			StringBuffer result = new StringBuffer();
-			if (entity != null) {
-				InputStream instream = entity.getContent();
-				try {
-					BufferedReader rd = new BufferedReader(
-							new InputStreamReader(instream));
-					
-					String line = "";
-					while ((line = rd.readLine()) != null) {
-						result.append(line);
-					}
-
-					System.out.println(result.toString());
-				} finally {
-					instream.close();
-				}
-				return result.toString();
-			}
-		} catch (Exception e) {
-			System.out.print(e);
-		}
-
-		System.out.print("");
-
-		return "";
+	public Result<Transaction> capture(String transactionId) {
+		
+		Result<Transaction> result = gateway.transaction().submitForSettlement(transactionId);
+		return result;
 	}
 	
-	public String capture(String authorisationToken, String amount)
-	{
-		try {
-			// url to make the call
-			String endpoint = "https://core.spreedly.com/v1/transactions/"+authorisationToken+"/capture.xml";
-
-			// create http client
-			HttpClient httpclient = new DefaultHttpClient();
-			HttpPost httppost = new HttpPost(endpoint);
-
-			// add authentiction header
-			httppost.addHeader(BasicScheme
-					.authenticate(
-							new UsernamePasswordCredentials(
-									"J0QM5AkMDWyzV9NnvPtuNYhsU7Q",
-									"HjkPEYVxQ04U0FiHlwS5Cd17djh4JO8nE6X1Htju9koXo7qYw9Q1M6PdHJexXJDh"),
-							"UTF-8", false));
-
-			// Request parameters and other properties.
-			List<NameValuePair> params = new ArrayList<NameValuePair>();
-			params.add(new BasicNameValuePair("transaction[amount]",amount));
-			
-			httppost.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
-			
-			// read the response
-			HttpResponse response = httpclient.execute(httppost);
-			HttpEntity entity = response.getEntity();
-			StringBuffer result = new StringBuffer();
-			if (entity != null) {
-				InputStream instream = entity.getContent();
-				try {
-					BufferedReader rd = new BufferedReader(
-							new InputStreamReader(instream));
-					
-					String line = "";
-					while ((line = rd.readLine()) != null) {
-						result.append(line);
-					}
-
-					System.out.println(result.toString());
-				} finally {
-					instream.close();
-				}
-				return result.toString();
-			}
-		} catch (Exception e) {
-			System.out.print(e);
-		}
-
-		System.out.print("");
-
-		return "";
+	public Result<Transaction> refund(String transactionId) {
+		
+		Result<Transaction> result = gateway.transaction().refund(transactionId);
+		return result;
 	}
 	
-	public String voidOperation(String authorisationToken)
-	{
-		try {
-			// url to make the call
-			String endpoint = "https://core.spreedly.com/v1/transactions/"+authorisationToken+"/void.xml";
-
-			// create http client
-			HttpClient httpclient = new DefaultHttpClient();
-			HttpPost httppost = new HttpPost(endpoint);
-
-			// add authentiction header
-			httppost.addHeader(BasicScheme
-					.authenticate(
-							new UsernamePasswordCredentials(
-									"J0QM5AkMDWyzV9NnvPtuNYhsU7Q",
-									"HjkPEYVxQ04U0FiHlwS5Cd17djh4JO8nE6X1Htju9koXo7qYw9Q1M6PdHJexXJDh"),
-							"UTF-8", false));
-
-			// Request parameters and other properties.
-
-
-			// read the response
-			HttpResponse response = httpclient.execute(httppost);
-			HttpEntity entity = response.getEntity();
-			StringBuffer result = new StringBuffer();
-			if (entity != null) {
-				InputStream instream = entity.getContent();
-				try {
-					BufferedReader rd = new BufferedReader(
-							new InputStreamReader(instream));
-					
-					String line = "";
-					while ((line = rd.readLine()) != null) {
-						result.append(line);
-					}
-
-					System.out.println(result.toString());
-				} finally {
-					instream.close();
-				}
-				return result.toString();
-			}
-		} catch (Exception e) {
-			System.out.print(e);
-		}
-
-		System.out.print("");
-
-		return "";
+	public Result<Transaction> refund(String transactionId, String amount) {
+		
+		Result<Transaction> result = gateway.transaction().refund(transactionId, new BigDecimal(amount));
+		return result;
 	}
 	
-	public String refund(String captureToken, String amount)
-	{
-		try {
-			// url to make the call
-			String endpoint = "https://core.spreedly.com/v1/transactions/"+captureToken+"/refund.xml";
-
-			// create http client
-			HttpClient httpclient = new DefaultHttpClient();
-			HttpPost httppost = new HttpPost(endpoint);
-
-			// add authentiction header
-			httppost.addHeader(BasicScheme
-					.authenticate(
-							new UsernamePasswordCredentials(
-									"J0QM5AkMDWyzV9NnvPtuNYhsU7Q",
-									"HjkPEYVxQ04U0FiHlwS5Cd17djh4JO8nE6X1Htju9koXo7qYw9Q1M6PdHJexXJDh"),
-							"UTF-8", false));
-
-			// Request parameters and other properties.
-			List<NameValuePair> params = new ArrayList<NameValuePair>();
-			params.add(new BasicNameValuePair("transaction[amount]",amount));
-			
-			httppost.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
-			
-			// read the response
-			HttpResponse response = httpclient.execute(httppost);
-			HttpEntity entity = response.getEntity();
-			StringBuffer result = new StringBuffer();
-			if (entity != null) {
-				InputStream instream = entity.getContent();
-				try {
-					BufferedReader rd = new BufferedReader(
-							new InputStreamReader(instream));
-					
-					String line = "";
-					while ((line = rd.readLine()) != null) {
-						result.append(line);
-					}
-
-					System.out.println(result.toString());
-				} finally {
-					instream.close();
-				}
-				return result.toString();
-			}
-		} catch (Exception e) {
-			System.out.print(e);
-		}
-
-		System.out.print("");
-
-		return "";
+	public Transaction getTransactionDetials(String transactionId) {
+		
+		Transaction transaction = gateway.transaction().find(transactionId);
+		return transaction;
 	}
 	
-	public String refund(String captureToken)
-	{
-		try {
-			// url to make the call
-			String endpoint = "https://core.spreedly.com/v1/transactions/"+captureToken+"/refund.xml";
-
-			// create http client
-			HttpClient httpclient = new DefaultHttpClient();
-			HttpPost httppost = new HttpPost(endpoint);
-
-			// add authentiction header
-			httppost.addHeader(BasicScheme
-					.authenticate(
-							new UsernamePasswordCredentials(
-									"J0QM5AkMDWyzV9NnvPtuNYhsU7Q",
-									"HjkPEYVxQ04U0FiHlwS5Cd17djh4JO8nE6X1Htju9koXo7qYw9Q1M6PdHJexXJDh"),
-							"UTF-8", false));
-
-			// Request parameters and other properties.
-
-
-			// read the response
-			HttpResponse response = httpclient.execute(httppost);
-			HttpEntity entity = response.getEntity();
-			StringBuffer result = new StringBuffer();
-			if (entity != null) {
-				InputStream instream = entity.getContent();
-				try {
-					BufferedReader rd = new BufferedReader(
-							new InputStreamReader(instream));
-					
-					String line = "";
-					while ((line = rd.readLine()) != null) {
-						result.append(line);
-					}
-
-					System.out.println(result.toString());
-				} finally {
-					instream.close();
-				}
-				return result.toString();
-			}
-		} catch (Exception e) {
-			System.out.print(e);
-		}
-
-		System.out.print("");
-
-		return "";
+	public Result<Transaction> voidOperation(String transactionId) {
+		
+		Result<Transaction> result = gateway.transaction().voidTransaction(transactionId);
+		return result;
 	}
+	
+
+	
+
+	
 
 }
