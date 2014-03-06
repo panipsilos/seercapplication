@@ -8,6 +8,9 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -25,11 +28,30 @@ import com.braintreegateway.Result;
 import com.braintreegateway.Transaction;
 import com.braintreegateway.TransactionRequest;
 
+@ManagedBean(name= "braintree") 
 public class BraintreeOperations {
 
 	private static BraintreeGateway gateway = new BraintreeGateway(
 			Environment.SANDBOX, "8g6rcnm8xnmyqb7p", "px3smkxtn79cfyx2",
 			"df0a499650f1b2f054b568f10393048c");
+	
+	
+	
+	
+	public String getUrl()
+	{
+		return gateway.transparentRedirect().url();
+	}
+	
+	public String setTrData()
+	{
+		TransactionRequest trParams = new TransactionRequest()
+	    .type(Transaction.Type.SALE)
+	    .amount(new BigDecimal("10.00"));
+		String trdata = gateway.transparentRedirect().trData(trParams, "http://127.0.0.1:8090/PaymentServiceProviders/BraintreePurchaseServlet");
+		return  trdata;
+	}
+
 
 	public Result<Transaction> authorise(String cardNumber, String cvv,
 			String month, String year, String amount, String currencyCode) {

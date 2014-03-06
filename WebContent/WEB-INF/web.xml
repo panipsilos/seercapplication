@@ -138,6 +138,17 @@
 		<servlet-class>org.providers.vivapayments.VivaPaymentsVoidServlet</servlet-class>
 	</servlet>
 
+	<!-- Viva Payments Capture Page -->
+	<servlet-mapping>
+		<servlet-name>VivaPaymentsCaptureServlet</servlet-name>
+		<url-pattern>/vivapaymentscapture</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>VivaPaymentsCaptureServlet</servlet-name>
+		<servlet-class>org.providers.vivapayments.VivaPaymentsCaptureServlet</servlet-class>
+	</servlet>
+
 	<!-- Viva Payments Success Page -->
 	<servlet-mapping>
 		<servlet-name>VivaPaymentsSuccessServlet</servlet-name>
@@ -247,7 +258,7 @@
 		<servlet-name>BraintreeCaptureServlet</servlet-name>
 		<url-pattern>/braintreecapture</url-pattern>
 	</servlet-mapping>
-	
+
 	<!-- BrainTree Refund mapping -->
 	<servlet>
 		<servlet-name>BraintreeRefundServlet</servlet-name>

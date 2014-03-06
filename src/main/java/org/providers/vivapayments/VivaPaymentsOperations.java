@@ -186,16 +186,94 @@ public class VivaPaymentsOperations {
 		return res.toString();
 	}
 
-	public String capture(String authorisationToken) {
+	public String capture(String transactionId) throws ClientProtocolException, IOException {
 
-		String result = null;
-		return result;
+		String url = "http://demo.vivapayments.com/api/transactions/"+transactionId;
+
+		// Initialise HTTP request
+		HttpClient httpclient = new DefaultHttpClient();
+		HttpPost httppost = new HttpPost(url);
+
+		// Authentication: Merchant ID : Password
+		httppost.addHeader(BasicScheme.authenticate(
+				new UsernamePasswordCredentials(
+						"526117a4-f9ab-4abf-9615-caf2266cae0d", "123456"),
+				"UTF-8", false));
+
+		// Request parameters and other properties.
+	//	List<NameValuePair> params = new ArrayList<NameValuePair>(2);
+	//  add(new BasicNameValuePair("Amount", amount));
+		// /params.add(new BasicNameValuePair("IsPreAuth", "true"));
+
+		//httppost.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
+
+		// Execute and get the response.
+		HttpResponse response = httpclient.execute(httppost);
+		HttpEntity entity = response.getEntity();
+		StringBuffer res = new StringBuffer();
+		if (entity != null) {
+			InputStream instream = entity.getContent();
+			try {
+				BufferedReader rd = new BufferedReader(new InputStreamReader(
+						instream));
+
+				String line = "";
+				while ((line = rd.readLine()) != null) {
+					res.append(line);
+				}
+
+				System.out.println(res.toString());
+			} finally {
+				instream.close();
+			}
+		}
+		//return the details of the transactions
+		return res.toString();
 	}
 
-	public String capture(String authorisationToken, String amount) {
+	public String capture(String transactionId, String amount) throws ClientProtocolException, IOException {
 
-		String result = null;
-		return result;
+		String url = "http://demo.vivapayments.com/api/transactions/"+transactionId;
+
+		// Initialise HTTP request
+		HttpClient httpclient = new DefaultHttpClient();
+		HttpPost httppost = new HttpPost(url);
+
+		// Authentication: Merchant ID : Password
+		httppost.addHeader(BasicScheme.authenticate(
+				new UsernamePasswordCredentials(
+						"526117a4-f9ab-4abf-9615-caf2266cae0d", "123456"),
+				"UTF-8", false));
+
+		// Request parameters and other properties.
+		List<NameValuePair> params = new ArrayList<NameValuePair>(2);
+		params.add(new BasicNameValuePair("Amount", amount));
+		// /params.add(new BasicNameValuePair("IsPreAuth", "true"));
+
+		//httppost.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
+
+		// Execute and get the response.
+		HttpResponse response = httpclient.execute(httppost);
+		HttpEntity entity = response.getEntity();
+		StringBuffer res = new StringBuffer();
+		if (entity != null) {
+			InputStream instream = entity.getContent();
+			try {
+				BufferedReader rd = new BufferedReader(new InputStreamReader(
+						instream));
+
+				String line = "";
+				while ((line = rd.readLine()) != null) {
+					res.append(line);
+				}
+
+				System.out.println(res.toString());
+			} finally {
+				instream.close();
+			}
+		}
+		//return the details of the transactions
+		return res.toString();
 	}
 
 	public String refund(String transactionId, String amount) throws ClientProtocolException, IOException {

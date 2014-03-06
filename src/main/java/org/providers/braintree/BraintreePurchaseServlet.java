@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.math.BigDecimal;
 
+import javax.faces.bean.ManagedBean;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,17 +18,20 @@ import com.braintreegateway.Transaction;
 import com.braintreegateway.TransactionRequest;
 import com.braintreegateway.ValidationError;
 
+
 public class BraintreePurchaseServlet extends HttpServlet {
 
 	private static BraintreeGateway gateway = new BraintreeGateway(
 			Environment.SANDBOX, "8g6rcnm8xnmyqb7p", "px3smkxtn79cfyx2",
 			"df0a499650f1b2f054b568f10393048c");
+	
+	
 
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
 
 		
-
+	
 		BraintreeOperations bo = new BraintreeOperations();
 		Result<Transaction> result = bo.purchase(req.getParameter("number"), req.getParameter("cvv"),
 				req.getParameter("month"), req.getParameter("year"),
@@ -53,5 +57,9 @@ public class BraintreePurchaseServlet extends HttpServlet {
 		}
 
 	}
-
+	
+	public void doGet(HttpServletRequest req, HttpServletResponse resp)
+			throws IOException {
+			System.out.println("");
+}
 }
