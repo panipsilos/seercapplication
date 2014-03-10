@@ -25,5 +25,8 @@ public class SpreedlyEndpointFactory extends ProviderEndpointFactory {
 	public SpreedlyPurchaseEndpoint createPurchaseEndpoint(){
 		return new SpreedlyPurchaseEndpoint(super.baseEndpoint);
 	}
-
+	public SpreedlyRefundEndpoint createRefundEndpoint(){		
+		return new SpreedlyRefundEndpoint(super.baseEndpoint);
+		
+	}
 }

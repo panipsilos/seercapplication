@@ -4,16 +4,12 @@
  */
 package org.paymentservice;
 
-import java.util.HashMap;
-
-import org.paymentservice.datatypes.Constants;
 import org.paymentservice.providers.spreedly.SpreedlyEndpointFactory;
-import org.paymentservice.providers.spreedly.SpreedlyOperations;
 import org.paymentservice.providers.spreedly.SpreedlyProviderMetadata;
 import org.paymentservice.providers.stripe.StripeEndpointFactory;
 import org.paymentservice.providers.stripe.StripeProviderMetadata;
 import org.paymentservice.utils.Http;
-import org.paymentservice.utils.XmlParser;
+
 
 /**
  * @author FGONIDIS
@@ -57,7 +53,7 @@ public class Provider {
 			break;
 		}
 		case 2: {
-			//instantiateStripe();
+			instantiateStripe();
 		}
 		}
 		// instantiate the Provider Endpoint Factory
@@ -89,18 +85,19 @@ public class Provider {
 		operationUtils = new BaseOperationUtils(providerEndpointFactory);			
 		operations = new BaseOperations(operationUtils,http);
 		
-		
-		// spreedly specific actions, add gateway.
-		// Gateway info should be added using an XML, 
-		// gateway token should be stored back in a XML.
-		if(Constants.gatewayToken==null){
-		HashMap<String,String> requestData = new HashMap<String,String>();
-		requestData.put("gateway[gateway_type]", "test");
-		String response = new SpreedlyOperations(operationUtils, http).addGateway(requestData);
-		
-		//parse xml and store token value to constants file.
-		Constants.gatewayToken = new XmlParser().readXmlElement(response, "token");
-		}
+		/**
+		 * spreedly specific actions, add gateway.Gateway info should be added using an XML
+		 * gateway token should be stored back in a XML. It s better to move this action to pre-operation actions. 
+		 * Since it s only valid for specific operations
+		 */
+//		if(Constants.gatewayToken==null){
+//		HashMap<String,String> requestData = new HashMap<String,String>();
+//		requestData.put("gateway[gateway_type]", "test");
+//		String response = new SpreedlyOperations(operationUtils, http).addGateway(requestData);
+//		
+//		//parse xml and store token value to constants file.
+//		Constants.gatewayToken = new XmlParser().readXmlElement(response, "token");
+//		}
 	}
 
 	public void instantiateStripe() {

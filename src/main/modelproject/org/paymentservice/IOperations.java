@@ -26,7 +26,7 @@ public interface IOperations {
 	/**
 	 * 
 	 */
-	 public String refund(String captureToken, String amount);
+	 public String refund(String captureToken, TransactionData transactionData);
 
 	/**
 	 * 

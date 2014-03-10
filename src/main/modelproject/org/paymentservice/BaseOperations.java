@@ -6,6 +6,7 @@ package org.paymentservice;
 import org.paymentservice.datamodel.PaymentMethod;
 import org.paymentservice.datamodel.TransactionData;
 import org.paymentservice.datatypes.Operation;
+import org.paymentservice.datatypes.RequestMethod;
 import org.paymentservice.utils.Http;
 
 /**
@@ -56,8 +57,9 @@ public class BaseOperations implements IOperations {
 	public String purchase(TransactionData transactionData) {
 		//get endpoint
 		String endpoint = operationUtils.buildEndpoint(Operation.PURCHASE, null);
-		// send http request and receive response
-		response = http.httpRequest(endpoint, null, transactionData.requestData);
+		// send http request and receive response, set default Request Methods, specific providers may override these operation if they 
+		//have alternative implementations.
+		response = http.httpRequest(RequestMethod.POST,endpoint, null, transactionData.requestData);
 		return response;
 	}
 
@@ -83,10 +85,14 @@ public class BaseOperations implements IOperations {
 	}
 
 	/**
-	 * 
+	 * Arguments are capture token and the transactionData. In the transactionData optionally goes the amount
 	 */
-	public String refund(String captureToken, String amount) {
-		return null;
+	public String refund(String captureToken, TransactionData transactionData) {
+		//get Endpoint
+		String endpoint = operationUtils.buildEndpoint(Operation.REFUND, captureToken);
+		// see http request and receive response
+		response = http.httpRequest(RequestMethod.POST,endpoint, null, transactionData.requestData); //maybe change constructor of http request with build pattern
+		return response;
 	}
 
 	/**
@@ -95,5 +101,4 @@ public class BaseOperations implements IOperations {
 	public String voidOperation(String authorisationToken) {
 		return null;
 	}
-
 }

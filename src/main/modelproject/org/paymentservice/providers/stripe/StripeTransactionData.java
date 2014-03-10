@@ -3,7 +3,7 @@
  */
 package org.paymentservice.providers.stripe;
 
-import org.paymentservice.datamodel.PaymentMethod;
+
 import org.paymentservice.datamodel.TransactionData;
 
 

@@ -13,6 +13,7 @@ import org.apache.http.NameValuePair;
 import org.apache.http.auth.UsernamePasswordCredentials;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.auth.BasicScheme;
 import org.apache.http.impl.client.DefaultHttpClient;
@@ -239,8 +240,7 @@ public class SpreedlyOperations {
 	{
 		try {
 			// url to make the call
-			String endpoint = "https://core.spreedly.com/v1/transactions/"+captureToken+"/refund.xml";
-
+			String endpoint = "https://core.spreedly.com/v1/transactions/"+captureToken+"/credit.xml";
 			// create http client
 			HttpClient httpclient = new DefaultHttpClient();
 			HttpPost httppost = new HttpPost(endpoint);
@@ -273,7 +273,6 @@ public class SpreedlyOperations {
 					while ((line = rd.readLine()) != null) {
 						result.append(line);
 					}
-
 					System.out.println(result.toString());
 				} finally {
 					instream.close();
@@ -293,7 +292,7 @@ public class SpreedlyOperations {
 	{
 		try {
 			// url to make the call
-			String endpoint = "https://core.spreedly.com/v1/transactions/"+captureToken+"/refund.xml";
+			String endpoint = "https://core.spreedly.com/v1/transactions/"+captureToken+"/credit.xml";
 
 			// create http client
 			HttpClient httpclient = new DefaultHttpClient();
@@ -324,7 +323,6 @@ public class SpreedlyOperations {
 					while ((line = rd.readLine()) != null) {
 						result.append(line);
 					}
-
 					System.out.println(result.toString());
 				} finally {
 					instream.close();

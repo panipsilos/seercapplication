@@ -4,6 +4,7 @@
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/modelproject"/>
         <property name="context-root" value="PaymentServiceProviders"/>
         <property name="java-output-path" value="/PaymentServiceProviders/build/classes"/>
     </wb-module>

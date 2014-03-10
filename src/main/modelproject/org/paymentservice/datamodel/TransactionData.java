@@ -15,11 +15,11 @@ public abstract class TransactionData {
 
 	public PaymentMethod paymentMethod;
 	/**
-	 * 
+	 * Amount is declared here but used in the sub-classes
 	 */
 	private java.lang.String amount;
 	/**
-	 * 
+	 * Currency Code  is declared here but used in the sub-classes
 	 */
 	private java.lang.String currencyCode;
 	/**

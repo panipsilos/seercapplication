@@ -14,11 +14,6 @@ public abstract class PurchaseEndpoint {
 	 */
 	 public String baseEndpoint;
 	/**
-	 * Enumeration Operation holds the type of operation to get the endpoint for
-	 */
-	private org.paymentservice.datatypes.Operation operation;
-
-	/**
 	 * 
 	 */
 	public PurchaseEndpoint() {
@@ -28,8 +23,10 @@ public abstract class PurchaseEndpoint {
 	/**
 	 * 		
 	 */
-	 public String getEndpoint(String identifier) {
-		return null;
-	}
+	 public String getEndpoint(String identifier){
+		 return null;
+	 }
+
+
 
 }

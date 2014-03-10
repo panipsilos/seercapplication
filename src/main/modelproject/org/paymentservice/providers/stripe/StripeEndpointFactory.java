@@ -4,7 +4,7 @@
 package org.paymentservice.providers.stripe;
 
 import org.paymentservice.ProviderEndpointFactory;
-import org.paymentservice.providers.spreedly.SpreedlyPurchaseEndpoint;
+
 
 /**
  * @author FGONIDIS
@@ -26,6 +26,10 @@ public class StripeEndpointFactory extends ProviderEndpointFactory {
 	 */
 	public StripePurchaseEndpoint createPurchaseEndpoint(){
 		return new StripePurchaseEndpoint(super.baseEndpoint);
+	}
+	
+	public StripeRefundEndpoint createRefundEndpoint(){
+		return new StripeRefundEndpoint(super.baseEndpoint);
 	}
 
 }

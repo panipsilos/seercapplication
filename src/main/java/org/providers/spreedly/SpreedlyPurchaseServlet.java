@@ -42,7 +42,7 @@ public class SpreedlyPurchaseServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
-		String url = "https://core.spreedly.com/v1/gateways/SP8GkisOIdQNOyECXveyHjhuNSQ/purchase.xml";
+		String url = "https://core.spreedly.com/v1/gateways/Esc6Phi6H4Gpz7jDXeciDFItfJc/purchase.xml";
 		
 		// read query parameters appended in the url by Spreedly
 		String requestURI = req.getRequestURI().toString();
@@ -66,8 +66,8 @@ public class SpreedlyPurchaseServlet extends HttpServlet {
 //		requestData.put("transaction[currency_code]","USD");
 //		requestData.put("transaction[payment_method_token]",paymentMethodToken);
 //		
-//		Http http = new Http();
-//		String tmpResult = http.httpRequest("https://core.spreedly.com/v1/gateways/SP8GkisOIdQNOyECXveyHjhuNSQ/purchase.xml", null, requestData);
+//		////Http http = new Http();
+//		//String tmpResult = http.httpRequest("https://core.spreedly.com/v1/gateways/SP8GkisOIdQNOyECXveyHjhuNSQ/purchase.xml", null, requestData);
 //		
 //		try {	
 //		HttpClient httpclient = new DefaultHttpClient();

@@ -7,7 +7,7 @@ import java.util.Map;
 
 import org.paymentservice.BaseOperations;
 import org.paymentservice.IOperationUtils;
-import org.paymentservice.IOperations;
+import org.paymentservice.datatypes.RequestMethod;
 import org.paymentservice.utils.Http;
 
 /**
@@ -33,7 +33,7 @@ public class SpreedlyOperations extends BaseOperations {
 	 public String addGateway(Map<String, String> requestData) {		
 		//for provider specific operations, endpoint can be hardcoded. Maybe I need to place it via the endpoint factory.
 		String endpoint = "https://core.spreedly.com/v1/gateways.xml";
-		String response = super.getHttp().httpRequest(endpoint, null, requestData);  
+		String response = super.getHttp().httpRequest(RequestMethod.POST,endpoint, null, requestData);  
 		return response;
 	}
 }

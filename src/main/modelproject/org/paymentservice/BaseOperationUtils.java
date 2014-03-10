@@ -15,6 +15,7 @@ public  class BaseOperationUtils implements IOperationUtils {
 
 	private ProviderEndpointFactory providerEndpointFactory;
 	private PurchaseEndpoint purchaseEndpoint;
+	private RefundEndpoint refundEndpoint;
 	/**
 	 * 
 	 */
@@ -41,9 +42,14 @@ public  class BaseOperationUtils implements IOperationUtils {
 	 private String getOperationEndpoint(String identifier) {
 		
 		 switch (operation) {
-		 	case PURCHASE:
+		 	case PURCHASE:{
 		 		purchaseEndpoint = providerEndpointFactory.createPurchaseEndpoint();
-		 		return purchaseEndpoint.getEndpoint(identifier);		 		
+		 		return purchaseEndpoint.getEndpoint(identifier);
+		 	}
+		 	case REFUND: {
+		 		refundEndpoint = providerEndpointFactory.createRefundEndpoint(); 
+		 		return refundEndpoint.getEndpoint(identifier);
+		 	}		 		
 		 }
 		 // else exception, unsupported operation
 		 return null;
