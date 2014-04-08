@@ -29,31 +29,31 @@ public class SpreedlyRefundServlet extends HttpServlet {
 		//response variable
 		String result;	
 		
-//		//call authorise method
-//		if(amount.compareTo("")==0)
-//		{
-//			result = operations.refund(captureToken);
-//		}
-//		else
-//		{
-//			result = operations.refund(captureToken, amount);
-//		}
-//		
-//		//print output
-//		PrintWriter out = resp.getWriter();
-//		out.println(new XmlFormatter().format(result.toString()));
-		
-		
-		Provider provider = null;
-		try {
-			provider = new Provider(1,"J0QM5AkMDWyzV9NnvPtuNYhsU7Q","HjkPEYVxQ04U0FiHlwS5Cd17djh4JO8nE6X1Htju9koXo7qYw9Q1M6PdHJexXJDh");
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		//call authorise method
+		if(amount.compareTo("")==0)
+		{
+			result = operations.refund(captureToken);
 		}
-		TransactionData td = new SpreedlyTransactionData().amount("300");
-		IOperations operator = provider.getOperator();
-		operator.refund(captureToken, td);
-		System.out.print("finished task");
+		else
+		{
+			result = operations.refund(captureToken, amount);
+		}
+		
+		//print output
+		PrintWriter out = resp.getWriter();
+		out.println(new XmlFormatter().format(result.toString()));
+		
+		
+//		Provider provider = null;
+//		try {
+//			provider = new Provider(1,"J0QM5AkMDWyzV9NnvPtuNYhsU7Q","HjkPEYVxQ04U0FiHlwS5Cd17djh4JO8nE6X1Htju9koXo7qYw9Q1M6PdHJexXJDh");
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		TransactionData td = new SpreedlyTransactionData().amount("300");
+//		IOperations operator = provider.getOperator();
+//		operator.refund(captureToken, td);
+//		System.out.print("finished task");
 	}
 }

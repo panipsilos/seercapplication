@@ -26,7 +26,7 @@ public class SpreedlyOperations {
 	{
 		try {
 			// url to make the call
-			String endpoint = "https://core.spreedly.com/v1/gateways/SP8GkisOIdQNOyECXveyHjhuNSQ/authorize.xml";
+			String endpoint = "https://core.spreedly.com/v1/gateways/I7qNGNVHxDKPfiJgjgA1P2I2vAO/authorize.xml";
 
 			// create http client
 			HttpClient httpclient = new DefaultHttpClient();

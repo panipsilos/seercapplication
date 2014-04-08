@@ -62,12 +62,10 @@
 			<version>2.2</version>
 		</dependency>
 
-		<!-- Json parser
-		<dependency>
-			<groupId>org.json</groupId>
-			<artifactId>json</artifactId>
-			<version>20131018</version>
-		</dependency>  -->
+		<!-- Json parser <dependency> <groupId>org.json</groupId> <artifactId>json</artifactId> 
+			<version>20131018</version> </dependency> -->
+
+
 
 		<dependency>
 			<groupId>javax.servlet.jsp</groupId>
@@ -90,7 +88,7 @@
 		</dependency>
 
 	</dependencies>
-	
+
 
 
 </project>
