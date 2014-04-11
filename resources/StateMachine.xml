@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Stripe state machine. The idea is to define all states in which a provider 
+	can be found. Then a provider specific state machine can be composed based on 
+	the superset of states. -->
+
+<StateMachine>
+	<State name="PaymentForm"
+		action="org.paymentserviceframework.stripe.SendTransactionAction"
+		nextState="Finish" />
+</StateMachine>

@@ -16,6 +16,29 @@
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 
+	<!-- payment service framework servlet. All requests are routed to Front 
+		Controller -->
+	<servlet>
+		<servlet-name>FrontController</servlet-name>
+		<servlet-class>org.paymentserviceframework.FrontController</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>FrontController</servlet-name>
+		<url-pattern>/frontcontroller</url-pattern>
+	</servlet-mapping>
+
+	<!-- AuthoriseNET Response Mappping -->
+	<servlet>
+		<servlet-name>AuthorizeResponse</servlet-name>
+		<servlet-class>org.providers.authorizenet.AuthorizeResponseServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>AuthorizeResponse</servlet-name>
+		<url-pattern>/authorizenet</url-pattern>
+	</servlet-mapping>
+
 	<!-- Stripe Purchase Mapping -->
 	<servlet>
 		<servlet-name>StripePurchaseServlet</servlet-name>
