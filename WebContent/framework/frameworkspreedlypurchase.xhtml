@@ -20,13 +20,12 @@
 	<p:panel id="panel" header="Make a Test Purchase using Spreedly">
 		<form id="form" action="https://core.spreedly.com/v1/payment_methods"
 			method="post">
-
 			<input name="redirect_url" type="hidden" value="http://127.0.0.1:8090/PaymentServiceProviders/frontcontroller" />
 			<input name="environment_key" type="hidden" value="J0QM5AkMDWyzV9NnvPtuNYhsU7Q" /> 
 			<label for="Quantity">Quantity</label>
 			<input id="Quantity" name="quantity" type="text" /> 
 			<label for="Amount">Amount</label>
-			<input id="AMount" name="amount" type="text" /> 
+			<input id="Amount" name="amount" type="text" /> 
 			<br></br> 
 			<label for="credit_card_first_name">First name</label>
 			<input id="credit_card_first_name" name="credit_card[first_name]" type="text" /> 
@@ -43,7 +42,6 @@
 			<h:graphicImage id="image" alt="jsf-sun" url="drivein12.jpg"></h:graphicImage>
 			<br></br> <b>Price: Euro 2</b> <br></br>
 			<h:commandButton type='submit' value="Submit" />
-
 		</form>
 		<h4>Test data: 4111111111111111</h4>
 

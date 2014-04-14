@@ -95,7 +95,10 @@ public class Dispatcher {
 		{
 			this.setCurrentState(stateMachine.getState(stateIndex));
 		}
-		else{
+		else{			
+			/*
+			 * I may set the state to finish and peform a finalise. e.g desrtroy all servlets .
+			 */
 			System.out.println("state machine reached finish state");
 		}
 		

@@ -41,7 +41,7 @@ public class SendTransactionAction implements IAction {
 
 		
 		Map<String, String> requestData = new HashMap<String, String>();
-		requestData.put("transaction[amount]", request.getParameter("amount"));
+		requestData.put("transaction[amount]", (String) request.getSession().getAttribute("amount"));
 		requestData.put("transaction[currency_code]", "USD");
 		requestData.put("transaction[payment_method_token]", paymentMethodToken);
 
@@ -57,7 +57,7 @@ public class SendTransactionAction implements IAction {
 				e.printStackTrace();
 			}
 
-			out.print(outcome);
+			out.print(new XmlFormatter().format(outcome.toString()));;
 	
 	}
 }
