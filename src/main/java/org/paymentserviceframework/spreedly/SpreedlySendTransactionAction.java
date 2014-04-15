@@ -28,7 +28,7 @@ import org.paymentservice.utils.Http;
 import org.paymentserviceframework.actions.IAction;
 import org.utilities.XmlFormatter;
 
-public class SendTransactionAction implements IAction {
+public class SpreedlySendTransactionAction implements IAction {
 
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		

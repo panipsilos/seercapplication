@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.paymentserviceframework.actions.IAction;
 
-public class SendTransactionAction implements IAction {
+public class StripeSendTransactionAction implements IAction {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {

@@ -1,4 +1,4 @@
-package org.paymentserviceframework.spreedly;
+package org.paymentserviceframework.braintree;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -40,11 +40,11 @@ import freemarker.template.TemplateException;
 import freemarker.template.TemplateExceptionHandler;
 import freemarker.template.Version;
 
-public class FillOutFormAction implements IAction {
+public class BraintreeFillOutFormAction implements IAction {
 
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		
-			// read "ampount" and store in the servletContext
+			// read "amount" and store in the servletContext
 			request.setAttribute("amount", request.getParameter("amount"));
 			request.getSession().setAttribute("amount", request.getParameter("amount"));
 			
@@ -65,7 +65,7 @@ public class FillOutFormAction implements IAction {
 		    
 		    // Where do we load the templates from:
 		    try {
-				cfg.setDirectoryForTemplateLoading(new File("C:\\"));
+				cfg.setDirectoryForTemplateLoading(new File("C:\\FrameworkResources"));
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -91,7 +91,7 @@ public class FillOutFormAction implements IAction {
 
 		    Template template = null;
 			try {
-				template = cfg.getTemplate("helloworld.ftl");
+				template = cfg.getTemplate("braintreeform.ftl");
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -110,29 +110,6 @@ public class FillOutFormAction implements IAction {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			/*
-			response.setContentType("text/html");
-			
-			try {
-				out = response.getWriter();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-			
-		    out.println("<html>");
-		    out.println("<head>");
-		    out.println("<title>Hola</title>");
-		    out.println("</head>");
-		    out.println("<body bgcolor=\"white\">");
-		    out.println("<h1>");
-		    String amount = request.getParameter("amount");
-		    out.println(amount);
-		    out.println("</h1>");
-		    out.println("</body>");
-		    out.println("</html>");
-		*/
 			System.out.println("html printed");
 	
 	}

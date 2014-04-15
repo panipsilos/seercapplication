@@ -6,6 +6,6 @@
 
 <StateMachine>
 	<State name="PaymentForm"
-		action="org.paymentserviceframework.stripe.SendTransactionAction"
+		action="org.paymentserviceframework.stripe.StripeSendTransactionAction"
 		nextState="Finish" />
 </StateMachine>
