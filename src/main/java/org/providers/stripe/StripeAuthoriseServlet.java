@@ -35,7 +35,7 @@ public class StripeAuthoriseServlet extends HttpServlet {
 		String token = req.getParameter("stripeToken");		
 		
 		StripeOperations so = new StripeOperations();
-		result = so.authorise(token, "100", "USD");
+		result = so.authorise(token, "200", "USD");
 		out.print(result);
 		
 	}	

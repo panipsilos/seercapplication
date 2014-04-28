@@ -1,25 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- Stripe state machine. The idea is to define all states in which a provider 
-	can be found. Then a provider specific state machine can be composed based on 
-	the superset of states. -->
 
 
-<!-- Stripe 	
+<!-- Stripe 
 <StateMachine>
 	<State name="PaymentForm"
-		action="org.paymentserviceframework.stripe.SendTransactionAction"
+		action="org.paymentserviceframework.stripe.StripeFillOutFormAction"
+		nextState="SendTransaction" />
+	<State name="SendTransaction"
+		action="org.paymentserviceframework.stripe.StripeSendTransactionAction"
 		nextState="Finish" />
-</StateMachine>
+</StateMachine> 	
 -->
 
-<!-- Spreedly -->
+<!-- Spreedly  
 <StateMachine>
 	<State name="PaymentForm"
 		action="org.paymentserviceframework.spreedly.SpreedlyFillOutFormAction"
-		nextState="WaitingForToken"/>
-	<State name="WaitingForToken"
-		action="org.paymentserviceframework.spreedly.SendTransactionAction"
-		nextState="Finish" />
-		
-</StateMachine>
+		nextState="SendTransaction"/>
+	<State name="SendTransaction"
+		action="org.paymentserviceframework.spreedly.SpreedlySendTransactionAction"
+		nextState="Finish" /> 		
+</StateMachine> -->
+
+<!-- Viva 
+<StateMachine>
+	<State name="PaymentForm"
+		action="org.paymentserviceframework.viva.VivaSendTransactionAction"
+		nextState="WaitingForOutcome" />
+</StateMachine> -->
+
+<!-- Braintree -->
+<StateMachine>
+	<State name="PaymentForm"
+		action="org.paymentserviceframework.braintree.BraintreeFillOutFormAction"
+		nextState="SendTransaction"/>
+	<State name="SendTransaction"
+		action="org.paymentserviceframework.braintree.BraintreeSendTransactionAction"
+		nextState="Finish" /> 		
+</StateMachine> 

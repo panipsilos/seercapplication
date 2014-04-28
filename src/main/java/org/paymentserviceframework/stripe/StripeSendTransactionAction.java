@@ -28,14 +28,17 @@ public class StripeSendTransactionAction implements IAction {
 			e1.printStackTrace();
 		}
 
+		// read from form
 		String token = request.getParameter("stripeToken");
-		String amount = request.getParameter("amount");
+		
+		// read from session. FillOutForm has put it there
+		String amount = (String) request.getSession().getAttribute("amount");
 		
 		Stripe.apiKey = "sk_test_gcTm7NdWkkX0xJyRbd88IOgY"; 
 
 		// construct the payment call using stripe library
 		Map<String, Object> chargeParams = new HashMap<String, Object>();
-		chargeParams.put("amount", 100);
+		chargeParams.put("amount", amount);
 		chargeParams.put("currency", "usd");
 		chargeParams.put("card", token); // obtained with Stripe.js
 		chargeParams.put("description", "Charge for test@example.com");

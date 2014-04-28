@@ -15,21 +15,22 @@
 
 
 <body>
-	<h:graphicImage id="image" alt="jsf-sun" url="seerc.jpg"
+	<h:graphicImage id="image" alt="jsf-sun" url="../img/seerc.jpg"
 		style="height: 115px; width: 266px; "></h:graphicImage>
-	<p:panel id="panel" header="Make a Test Purchase using Spreedly">
+	<p:panel id="panel" header="Make a Test Purchase">
 		<form id="form" action="http://127.0.0.1:8090/PaymentServiceProviders/frontcontroller"
-			method="post">
-
-		
+			method="post">		
+			<br></br> 			
+			<h:graphicImage id="image" alt="jsf-sun" url="../drivein12.jpg"></h:graphicImage>
+			<br></br>
+			<br></br>
 			<label for="Amount">Amount</label>
-			<input id="AMount" name="amount" type="text" /> 			
-			<h:graphicImage id="image" alt="jsf-sun" url="drivein12.jpg"></h:graphicImage>
-			<br></br> <b>Price: Euro 2</b> <br></br>
+			<input id="Amount" name="amount" type="text" />
+			<br></br>
+			<!--  <b>Price: Euro 2</b> -->
+			<br></br>
 			<h:commandButton type='submit' value="Submit" />
-
-		</form>
-		<h4>Test data: 4111111111111111</h4>
+		</form>		
 
 	</p:panel>
 

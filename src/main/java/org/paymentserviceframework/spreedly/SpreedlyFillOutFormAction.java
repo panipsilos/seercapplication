@@ -78,14 +78,13 @@ public class SpreedlyFillOutFormAction implements IAction {
 		    cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
 
 		    // 2. Proccess template(s)
-		    //
-		    // You will do this for several times in typical applications.
+
 		    
 		    // 2.1. Prepare the template input:
 		    
 		    Map<String, Object> input = new HashMap<String, Object>();
 		    
-//		 /   input.put("title", "Vogella example");
+
 		    
 		    // 2.2. Get the template
 

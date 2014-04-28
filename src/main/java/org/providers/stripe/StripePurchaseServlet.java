@@ -13,6 +13,7 @@ import org.paymentservice.IOperations;
 import org.paymentservice.Provider;
 import org.paymentservice.datamodel.TransactionData;
 import org.paymentservice.providers.stripe.StripeTransactionData;
+import org.utilities.JsonFormatter;
 
 import com.stripe.*;
 import com.stripe.exception.StripeException;
@@ -38,7 +39,7 @@ public class StripePurchaseServlet extends HttpServlet {
 		String token = req.getParameter("stripeToken");		
 		
 		// move to the payment service library
-		TransactionData td = new StripeTransactionData().amount("100").currencyCode("EUR").paymentMethod().token(token).done();
+		TransactionData td = new StripeTransactionData().amount("200").currencyCode("EUR").paymentMethod().token(token).done();
 		Provider provider = null;
 		try {
 			provider = new Provider(2, "sk_test_gcTm7NdWkkX0xJyRbd88IOgY",null);
@@ -52,6 +53,6 @@ public class StripePurchaseServlet extends HttpServlet {
 		
 //		StripeOperations so = new StripeOperations();
 //		result = so.purchase(token, "100", "USD");
-//		out.print(result);
+		out.print(JsonFormatter.parseJson(result));
 	}	
 }

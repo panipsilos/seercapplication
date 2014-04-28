@@ -41,7 +41,7 @@ public class SpreedlyAuthoriseServlet extends HttpServlet {
 		String paymentMethodToken = queryString.substring(6);
 		
 		//hardcoded elemetns. up to user of the framework to fill in these values
-		String amount = "100";
+		String amount = "200";
 		String currencyCode = "EUR";
 				
 		//call authorise method

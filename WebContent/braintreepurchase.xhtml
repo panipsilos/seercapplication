@@ -18,7 +18,7 @@
 	<h:graphicImage id="image" alt="jsf-sun" url="seerc.jpg"
 		style="height: 115px; width: 266px; "></h:graphicImage>
 	<p:panel id="panel" header="Make a Test Purchase using Braintree">
-		<form action="/PaymentServiceProviders/BraintreeAuthoriseServlet" method="post" id="braintree-payment-form">
+		<form action="/PaymentServiceProviders/BraintreePurchaseServlet" method="post" id="braintree-payment-form">
         <p>
           <label>Card Number</label>
           <input type="text" size="20" autocomplete="off" data-encrypted-name="number" />

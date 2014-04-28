@@ -32,7 +32,7 @@ public class VivaPaymentsAuthoriseServlet extends HttpServlet {
 		VivaPaymentsOperations vo = new VivaPaymentsOperations();
 		
 		//get the redirect URL "hardcoded + orderID"
-		String result = vo.authorise("300");
+		String result = vo.authorise("200");
 		
 		
 		//redirect user to the viva page appending the order id

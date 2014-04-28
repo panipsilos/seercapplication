@@ -62,7 +62,7 @@ public class SpreedlyPurchaseServlet extends HttpServlet {
 //		operations.purchase(td);
 		
 		Map<String,String> requestData = new HashMap<String, String>();
-		requestData.put("transaction[amount]", "500");
+		requestData.put("transaction[amount]", "200");
 		requestData.put("transaction[currency_code]","USD");
 		requestData.put("transaction[payment_method_token]",paymentMethodToken);
 		

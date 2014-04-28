@@ -35,7 +35,7 @@ public class BraintreePurchaseServlet extends HttpServlet {
 		BraintreeOperations bo = new BraintreeOperations();
 		Result<Transaction> result = bo.purchase(req.getParameter("number"), req.getParameter("cvv"),
 				req.getParameter("month"), req.getParameter("year"),
-				req.getParameter("1000"), req.getParameter("USD"));
+				req.getParameter("200"), req.getParameter("USD"));
 
 		PrintWriter out = resp.getWriter();
 		if (result.isSuccess()) {

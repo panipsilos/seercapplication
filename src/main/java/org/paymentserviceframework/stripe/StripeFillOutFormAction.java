@@ -91,7 +91,7 @@ public class StripeFillOutFormAction implements IAction {
 
 		    Template template = null;
 			try {
-				template = cfg.getTemplate("stripeform - Copy.ftl");
+				template = cfg.getTemplate("stripeform.ftl");
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -109,30 +109,7 @@ public class StripeFillOutFormAction implements IAction {
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
-			}
-			/*
-			response.setContentType("text/html");
-			
-			try {
-				out = response.getWriter();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-			
-		    out.println("<html>");
-		    out.println("<head>");
-		    out.println("<title>Hola</title>");
-		    out.println("</head>");
-		    out.println("<body bgcolor=\"white\">");
-		    out.println("<h1>");
-		    String amount = request.getParameter("amount");
-		    out.println(amount);
-		    out.println("</h1>");
-		    out.println("</body>");
-		    out.println("</html>");
-		*/
+			}		
 			System.out.println("html printed");
 	
 	}

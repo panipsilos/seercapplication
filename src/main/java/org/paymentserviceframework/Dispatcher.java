@@ -100,7 +100,10 @@ public class Dispatcher {
 			 * I may set the state to finish and peform a finalise. e.g desrtroy all servlets .
 			 */
 			System.out.println("state machine reached finish state");
-		}
-		
+			
+			//initialise state machine
+			stateIndex = 0;
+			this.setCurrentState(stateMachine.getState(stateIndex));
+		}		
 	}
 }

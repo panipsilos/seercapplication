@@ -32,7 +32,7 @@ public class VivaPaymentsPurchaseServlet extends HttpServlet {
 		VivaPaymentsOperations vo = new VivaPaymentsOperations();
 		
 		//get the redirect URL "hardcoded + orderID"
-		String result = vo.purchase("300");
+		String result = vo.purchase("200");
 		
 		
 		//redirect user to the viva page appending the order id

@@ -24,7 +24,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.paymentserviceframework.actions.IAction;
 
-public class VivaSendTransactionAction implements IAction {
+public class VivaFillOutFormAction implements IAction {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
