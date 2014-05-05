@@ -25,8 +25,8 @@
 		<servlet-name>FacebookServlet</servlet-name>
 		<url-pattern>/facebook</url-pattern>
 	</servlet-mapping>
-	
-		<servlet>
+
+	<servlet>
 		<servlet-name>FacebookResponse</servlet-name>
 		<servlet-class>org.cloudservices.authenticationservice.facebook.FacebookResponse</servlet-class>
 	</servlet>
@@ -333,6 +333,17 @@
 	<servlet-mapping>
 		<servlet-name>BraintreeGetTransactionDetailsServlet</servlet-name>
 		<url-pattern>/braintreegettransactiondetails</url-pattern>
+	</servlet-mapping>
+
+	<!-- Google authentication callback -->
+	<servlet>
+		<servlet-name>OauthCallbackServlet</servlet-name>
+		<servlet-class>org.cloudservices.authenticationservice.google.OauthCallbackServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>OauthCallbackServlet</servlet-name>
+		<url-pattern>/oauth2callback</url-pattern>
 	</servlet-mapping>
 
 	<servlet-mapping>

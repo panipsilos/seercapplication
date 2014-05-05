@@ -14,12 +14,16 @@
 	<h:graphicImage id="image" alt="jsf-sun" url="../seerc.jpg"
 		style="height: 115px; width: 266px; "></h:graphicImage>
 	<p:panel id="panel" header="Authenication Service">
-		<form id="form" action="/PaymentServiceProviders/facebook"
-			method="post">			
-			<br></br>			
-			<h:commandButton type='submit' value="Submit" />
-		</form>
+
 	</p:panel>
+	<a
+		href="https://www.facebook.com/dialog/oauth?client_id=603302976432823&amp;redirect_uri=%2Ffacebook">
+		<button>sign in with facebook</button>
+	</a>
+	<a
+		href="https://accounts.google.com/o/oauth2/auth?scope=email%20profile&amp;state=%2Fprofile&amp;response_type=code&amp;redirect_uri=http%3A%2F%2Flocalhost%3A8090%2FPaymentServiceProviders%2Foauth2callback&amp;client_id=433195534865.apps.googleusercontent.com&amp;approval_prompt=force">
+		<button>sign in with</button>
+	</a>
 </body>
 
 </html>
