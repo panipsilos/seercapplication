@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.http.client.utils.URLEncodedUtils;
+import org.primefaces.json.JSONObject;
+import org.utilities.JsonFormatter;
 import org.utilities.RequestMethod;
 import org.utilities.Http;
 import org.utilities.HttpNew;
@@ -44,7 +46,7 @@ public class OauthCallbackServlet extends HttpServlet{
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
-		resp.setContentType("text/html");
+		resp.setContentType("text/plain");
 	    PrintWriter out = resp.getWriter();
 
 	    //get the authorization code
@@ -62,20 +64,21 @@ public class OauthCallbackServlet extends HttpServlet{
 		requestData.put("grant_type", "authorization_code");
 		
 		http = new HttpNew("", "");
+		//receive access token 
 		response = http.httpRequest(RequestMethod.POST, "https://accounts.google.com/o/oauth2/token", null, requestData);
 		
 		
+		//parse jSON and read access token 
+		String google_token = JsonFormatter.getJsonElement(response, "access_token");
+		String[] element =  google_token.split("\"");
+		String access_token = element[1];
 		
-		
+		http = new HttpNew();
+		String contacts = http.httpRequest(RequestMethod.GET, "https://www.googleapis.com/plus/v1/people/me?access_token="+access_token, null, null);
+		String prettyResponse = JsonFormatter.parseJson(contacts);
 	    
-	    out.println("<html>");
-	    out.println("<head>");
-	    out.println("<title>Hola GET</title>");
-	    out.println("</head>");
-	    out.println("<body bgcolor=\"white\">");
-	    out.println(authorizationCode);
-	    out.println("</body>");
-	    out.println("</html>");
+	    out.print(prettyResponse);
+
 	}
 
 }

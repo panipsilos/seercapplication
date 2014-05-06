@@ -61,11 +61,11 @@ public class HttpNew {
 
 			System.out.println("Sending HttpRequest");
 			// Authenticate
-			CredentialsProvider credsProvider = new BasicCredentialsProvider();
-			credsProvider.setCredentials(
-					new AuthScope(url, AuthScope.ANY_PORT),
-					new UsernamePasswordCredentials(this.username,
-							this.password));
+//			CredentialsProvider credsProvider = new BasicCredentialsProvider();
+//			credsProvider.setCredentials(
+//					new AuthScope(url, AuthScope.ANY_PORT),
+//					new UsernamePasswordCredentials(this.username,
+//							this.password));
 
 			// create Http client
 
@@ -80,9 +80,9 @@ public class HttpNew {
 				{
 					HttpGet httpget = new HttpGet(url);
 					// authenticate
-					httpget.addHeader(BasicScheme.authenticate(
-							new UsernamePasswordCredentials(username, password),
-							"UTF-8", false));
+//					httpget.addHeader(BasicScheme.authenticate(
+//							new UsernamePasswordCredentials(username, password),
+//							"UTF-8", false));
 					// add headers
 					
 					// send request

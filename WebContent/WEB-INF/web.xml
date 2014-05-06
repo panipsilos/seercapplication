@@ -23,18 +23,10 @@
 
 	<servlet-mapping>
 		<servlet-name>FacebookServlet</servlet-name>
-		<url-pattern>/facebook</url-pattern>
-	</servlet-mapping>
-
-	<servlet>
-		<servlet-name>FacebookResponse</servlet-name>
-		<servlet-class>org.cloudservices.authenticationservice.facebook.FacebookResponse</servlet-class>
-	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>FacebookResponse</servlet-name>
 		<url-pattern>/facebook-response</url-pattern>
 	</servlet-mapping>
+
+
 
 	<!-- payment service framework servlet. All requests are routed to Front 
 		Controller -->
