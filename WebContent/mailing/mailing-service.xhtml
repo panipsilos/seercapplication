@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title><ui:insert name="title">Default title</ui:insert></title>
+</h:head>
+
+<body>
+	<h:graphicImage id="image" alt="jsf-sun" url="../seerc.jpg"
+		style="height: 115px; width: 266px; "></h:graphicImage>
+	<p:panel id="panel" header="Authenication Service">
+		<h:panelGrid columns="2" cellpadding="10">
+			<h:panelGrid columns="1" cellpadding="10">
+				<p:graphicImage value="/img/mailgun.jpg" width="200" height="100" />
+				<a
+					href="https://www.facebook.com/dialog/oauth?client_id=603302976432823&amp;redirect_uri=http%3A%2F%2F192.168.40.106%3A8090%2FPaymentServiceProviders%2Ffacebook-response">
+					<button>MailGun (Heroku)</button>
+				</a>
+			</h:panelGrid>
+		</h:panelGrid>
+	</p:panel>
+
+
+</body>
+
+</html>
