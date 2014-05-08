@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title><ui:insert name="title">Default title</ui:insert></title>
+</h:head>
+
+<body>
+
+	<h:graphicImage id="image" alt="jsf-sun" url="seerc.jpg"
+		style="height: 115px; width: 266px; "></h:graphicImage>
+	<p:panel id="panel" header="Choose your Cloud Service ">
+
+		<h:panelGrid columns="3" cellpadding="10">
+
+			<h:panelGrid columns="1" cellpadding="10">
+				<p:graphicImage value="/img/payment.jpg" width="150" height="150" />
+				<h:form>
+					<h:commandButton value="Payment Service"
+						action="choosepaymentservice?faces-redirect=true"></h:commandButton>
+				</h:form>
+			</h:panelGrid>
+
+			<h:panelGrid columns="1" cellpadding="10">
+				<p:graphicImage value="/img/authentication.jpg" width="150"
+					height="150" />
+				<h:form>
+					<h:commandButton value="Authentication Service"
+						action="authentication/authentication-service.xhtml?faces-redirect=true"></h:commandButton>
+				</h:form>
+			</h:panelGrid>
+
+			<h:panelGrid columns="1" cellpadding="10">
+				<p:graphicImage value="/img/mail.jpg" width="150"
+					height="150" />
+				<h:form>
+					<h:commandButton value="E-Mailing Service"
+						action="mailing/mailing-service.xhtml?faces-redirect=true"></h:commandButton>
+				</h:form>
+			</h:panelGrid>
+
+		</h:panelGrid>
+	</p:panel>
+
+</body>
+
+</html>
