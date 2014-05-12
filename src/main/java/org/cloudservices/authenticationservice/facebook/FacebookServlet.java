@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.http.HttpRequest;
 import org.utilities.HttpNew;
 import org.utilities.JsonFormatter;
 import org.utilities.RequestMethod;
@@ -49,13 +50,28 @@ public class FacebookServlet extends HttpServlet{
 //		String google_token = JsonFormatter.getJsonElement(response, "access_token");
 //		String[] element =  google_token.split("\"");
 //		String access_token = element[1];
+	    
+		String url = "https://graph.facebook.com/oauth/access_token";
 		
+		//construct query params
+	    Map<String,String> requestData = new HashMap<String, String>();
+		
+		requestData.put("client_id", "603302976432823");
+		requestData.put("redirect_uri", "http://localhost:8090/PaymentServiceProviders/facebook-response");
+		requestData.put("client_secret", "e9fa3d2754be4f8fb8e87543c30b09b3");
+		requestData.put("code", authorizationCode);
+		
+		//send request, wait for token
 		http = new HttpNew();
-		String fbReponse = http.httpRequest(RequestMethod.GET, "https://graph.facebook.com/oauth/access_token?client_id=603302976432823&redirect_uri=http://192.168.40.106:8090/PaymentServiceProviders/facebook-response&client_secret=e9fa3d2754be4f8fb8e87543c30b09b3&code="+authorizationCode, null, null);
-		String[] sub1 = fbReponse.split("&");
+		String fbResponse = http.httpRequest(RequestMethod.GET, url, null, requestData);
+		
+		//parse access_token
+		String[] sub1 = fbResponse.split("&");
 		String[] sub2 = sub1[0].split("=");
 		String accessToken = sub2[1];
 		
+		
+		//send request to get account details
 		String data = http.httpRequest(RequestMethod.GET,"https://graph.facebook.com/me?access_token="+accessToken, null,null);
 		
 		String prettyResponse = JsonFormatter.parseJson(data);

@@ -6,7 +6,7 @@
 	metadata-complete="false">
 
 	<welcome-file-list>
-		<welcome-file>choosepaymentservice.xhtml</welcome-file>
+		<welcome-file>choose-cloud-service.xhtml</welcome-file>
 	</welcome-file-list>
 
 
@@ -15,6 +15,17 @@
 		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
+
+	<!--  Mailing service, Mailgun -->
+	<servlet>
+		<servlet-name>MailgunServlet</servlet-name>
+		<servlet-class>org.cloudservices.mailing.mailgun.MailgunServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>MailgunServlet</servlet-name>
+		<url-pattern>/mailgun</url-pattern>
+	</servlet-mapping>
 
 	<servlet>
 		<servlet-name>FacebookServlet</servlet-name>

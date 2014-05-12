@@ -13,14 +13,14 @@
 <body>
 	<h:graphicImage id="image" alt="jsf-sun" url="../seerc.jpg"
 		style="height: 115px; width: 266px; "></h:graphicImage>
-	<p:panel id="panel" header="Authenication Service">
-		<h:panelGrid columns="2" cellpadding="10">
+	<p:panel id="panel" header="E-mailing Service">
+		<h:panelGrid columns="1" cellpadding="10">
 			<h:panelGrid columns="1" cellpadding="10">
 				<p:graphicImage value="/img/mailgun.jpg" width="200" height="100" />
-				<a
-					href="https://www.facebook.com/dialog/oauth?client_id=603302976432823&amp;redirect_uri=http%3A%2F%2F192.168.40.106%3A8090%2FPaymentServiceProviders%2Ffacebook-response">
-					<button>MailGun (Heroku)</button>
-				</a>
+				<h:form>
+					<h:commandButton value="Mailgun (Heroku)"
+						action="mailgun.xhtml?faces-redirect=true"></h:commandButton>
+				</h:form>
 			</h:panelGrid>
 		</h:panelGrid>
 	</p:panel>

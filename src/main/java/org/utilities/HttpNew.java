@@ -22,6 +22,7 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.impl.auth.BasicScheme;
 import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.apache.http.impl.client.DefaultHttpClient;
@@ -61,31 +62,39 @@ public class HttpNew {
 
 			System.out.println("Sending HttpRequest");
 			// Authenticate
-//			CredentialsProvider credsProvider = new BasicCredentialsProvider();
-//			credsProvider.setCredentials(
-//					new AuthScope(url, AuthScope.ANY_PORT),
-//					new UsernamePasswordCredentials(this.username,
-//							this.password));
 
-			// create Http client
-
+			// working snippet
 			HttpClient httpclient = new DefaultHttpClient();
+			
+		//	Asyn
 			
 			//Http response 
 			HttpResponse response = null;
 			
+			
+			
 			// according to the noun (GET, POST, DELETE) create the respective			
 			switch(requestMethod) {
 				case GET:
-				{
-					HttpGet httpget = new HttpGet(url);
-					// authenticate
-//					httpget.addHeader(BasicScheme.authenticate(
-//							new UsernamePasswordCredentials(username, password),
-//							"UTF-8", false));
-					// add headers
+				{								
+					//construct url query parameters
+					url = url+"?";
+					if(requestData!=null)
+					{
+						//add request parameters to the url
+						for (Map.Entry<String, String> entry : requestData.entrySet()) {
+							url = url+entry.getKey()+"="+entry.getValue()+"&";
+						}
+						
+					}
 					
-					// send request
+					//remove the last &
+					url = url.substring(0, url.length()-1);
+					
+//					//working snippet
+					HttpGet httpget = new HttpGet(url);
+
+//					// send request
 					response = httpclient.execute(httpget);
 					break;
 				}

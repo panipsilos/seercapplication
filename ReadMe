@@ -1,1 +1,8 @@
-The project has been backed up in the b:/phd/backupeclipseproject
+It has three parts:
+1) the first implementation of the payment providers: org.providers
+2) the first implementation of the state machine framwotk: org.paymentserviceframework
+3) the implementation of the authentication service: org.cloudservices.authenticationservice
+
+It is commited in the github under the name: seercapplication
+
+-The project has been backed up in the b:/phd/backupeclipseproject

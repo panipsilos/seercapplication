@@ -11,7 +11,7 @@
 			<url>http://repository.primefaces.org</url>
 		</repository>
 	</repositories>
-
+ 
 	<dependencies>
 		<dependency>
 			<groupId>com.sun.faces</groupId>
@@ -81,7 +81,7 @@
 			<version>2.2.4</version>
 		</dependency>
 
-		<!--  Braintree library -->
+		<!-- Braintree library -->
 		<dependency>
 			<groupId>com.braintreepayments.gateway</groupId>
 			<artifactId>braintree-java</artifactId>
