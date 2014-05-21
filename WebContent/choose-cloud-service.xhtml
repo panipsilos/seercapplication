@@ -16,7 +16,7 @@
 		style="height: 115px; width: 266px; "></h:graphicImage>
 	<p:panel id="panel" header="Choose your Cloud Service ">
 
-		<h:panelGrid columns="3" cellpadding="10">
+		<h:panelGrid columns="4" cellpadding="10">
 
 			<h:panelGrid columns="1" cellpadding="10">
 				<p:graphicImage value="/img/payment.jpg" width="150" height="150" />
@@ -36,11 +36,18 @@
 			</h:panelGrid>
 
 			<h:panelGrid columns="1" cellpadding="10">
-				<p:graphicImage value="/img/mail.jpg" width="150"
-					height="150" />
+				<p:graphicImage value="/img/mail.jpg" width="150" height="150" />
 				<h:form>
 					<h:commandButton value="E-Mailing Service"
 						action="mailing/mailing-service.xhtml?faces-redirect=true"></h:commandButton>
+				</h:form>
+			</h:panelGrid>
+
+			<h:panelGrid columns="1" cellpadding="10">
+				<p:graphicImage value="/img/messagequeue.jpg" width="200" height="150" />
+				<h:form>
+					<h:commandButton value="Message Queue Serivce"
+						action="messagequeue/messagequeue-service.xhtml?faces-redirect=true"></h:commandButton>
 				</h:form>
 			</h:panelGrid>
 

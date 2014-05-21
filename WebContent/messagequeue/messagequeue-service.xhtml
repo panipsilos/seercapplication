@@ -13,34 +13,27 @@
 <body>
 	<h:graphicImage id="image" alt="jsf-sun" url="../seerc.jpg"
 		style="height: 115px; width: 266px; "></h:graphicImage>
-	<p:panel id="panel" header="E-mailing Service">
-		<h:panelGrid columns="4" cellpadding="10">
+	<p:panel id="panel" header="Message Queue Service">
+		<h:panelGrid columns="3" cellpadding="10">
 			<h:panelGrid columns="1" cellpadding="10">
-				<p:graphicImage value="/img/mailgun.jpg" width="200" height="100" />
+				<p:graphicImage value="/img/cloudamqp.jpg" width="160" height="100" />
 				<h:form>
-					<h:commandButton value="Mailgun (Heroku)"
+					<h:commandButton value="CloudAmqp (Heroku)  N/A"
 						action="mailgun.xhtml?faces-redirect=true"></h:commandButton>
 				</h:form>
 			</h:panelGrid>
 			<h:panelGrid columns="1" cellpadding="10">
-				<p:graphicImage value="/img/amazonses.jpg" width="200" height="100" />
+				<p:graphicImage value="/img/googletasks.jpg" width="200" height="100" />
 				<h:form>
-					<h:commandButton value="Amazon SES"
-						action="amazonses.xhtml?faces-redirect=true"></h:commandButton>
+					<h:commandButton value="Google Tasks  N/A"
+						action="mailgun.xhtml?faces-redirect=true"></h:commandButton>
 				</h:form>
 			</h:panelGrid>
 			<h:panelGrid columns="1" cellpadding="10">
-				<p:graphicImage value="/img/sendgrid.jpg" width="200" height="100" />
+				<p:graphicImage value="/img/amazonsqs.jpg" width="160" height="100" />
 				<h:form>
-					<h:commandButton value="SendGrid (Heroku)"
-						action="sendgrid.xhtml?faces-redirect=true"></h:commandButton>
-				</h:form>
-			</h:panelGrid>
-			<h:panelGrid columns="1" cellpadding="10">
-				<p:graphicImage value="/img/postmark.jpg" width="200" height="100" />
-				<h:form>
-					<h:commandButton value="PostMark (Heroku)"
-						action="postmark.xhtml?faces-redirect=true"></h:commandButton>
+					<h:commandButton value="Amazon SQS  N/A"
+						action="mailgun.xhtml?faces-redirect=true"></h:commandButton>
 				</h:form>
 			</h:panelGrid>
 		</h:panelGrid>

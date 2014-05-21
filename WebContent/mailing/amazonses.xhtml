@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title><ui:insert name="title">Default title</ui:insert></title>
+
+</h:head>
+
+
+
+<body>
+	<h:graphicImage id="image" alt="jsf-sun" url="../img/seerc.jpg"
+		style="height: 115px; width: 266px; "></h:graphicImage>
+	<p:panel id="panel" header="Send an E-mail using Amazon SES">
+		<form  id="form"  style="height: 1000px;" action="to_be_implemented" method="post" >
+		<h4>Fill in the fields</h4>
+			<p:panelGrid border="2" columns="2" style="height: 220px; width: 400px; ">
+				<h:outputText value="From (Source)"></h:outputText>
+				<p:inputText id ="From"  required="true" requiredMessage="Please enter the project name."></p:inputText>
+				<h:outputText value="To (Destination.ToAddresses)"></h:outputText>
+				<p:inputText id="To"  required="true" requiredMessage="Please enter the project description."></p:inputText>
+				<h:outputText value="Subject (Subject)" required="true" requiredMessage="Please enter the project duration."></h:outputText>
+				<p:inputText id="Subject"  required="true" requiredMessage="Please enter the project duration."></p:inputText>
+				<h:outputText value="Text (Message.Body.Text.Data)" required="text" requiredMessage="Please enter the project duration."></h:outputText>
+				<p:inputTextarea id="Text"  required="true" requiredMessage="Please enter the project duration."></p:inputTextarea>
+			</p:panelGrid>
+			<br></br>
+			<h:commandButton type='submit' value="Send" />
+		</form> 
+	</p:panel>
+
+</body>
+
+</html>
+
+
+
+
+

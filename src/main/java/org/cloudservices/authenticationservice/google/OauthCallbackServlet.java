@@ -33,15 +33,8 @@ public class OauthCallbackServlet extends HttpServlet{
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
 		resp.setContentType("text/html");
-	    PrintWriter out = resp.getWriter();
 
-	    out.println("<html>");
-	    out.println("<head>");
-	    out.println("<title>Hola POST</title>");
-	    out.println("</head>");
-	    out.println("<body bgcolor=\"white\">");
-	    out.println("</body>");
-	    out.println("</html>");
+
 	}
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)

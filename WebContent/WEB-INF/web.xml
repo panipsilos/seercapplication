@@ -26,7 +26,8 @@
 		<servlet-name>MailgunServlet</servlet-name>
 		<url-pattern>/mailgun</url-pattern>
 	</servlet-mapping>
-
+	
+	<!-- Facebook Authentication -->
 	<servlet>
 		<servlet-name>FacebookServlet</servlet-name>
 		<servlet-class>org.cloudservices.authenticationservice.facebook.FacebookServlet</servlet-class>
