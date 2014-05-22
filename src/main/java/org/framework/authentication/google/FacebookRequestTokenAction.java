@@ -1,4 +1,4 @@
-package org.framework.authentication.facebook;
+package org.framework.authentication.google;
 
 import java.net.URI;
 import java.net.URISyntaxException;
